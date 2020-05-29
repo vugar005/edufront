@@ -31,6 +31,14 @@ export const INITIAL_AUTH_STATE: AuthState = {
         }
     }),
 
+    on(AuthActions.logout, (state, action) => {
+        return {
+            ...state,
+            user: null,
+            isAuthenticated: false
+        }
+    }),
+
 );
 
 export function authReducer(state, action: Action) {

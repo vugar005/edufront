@@ -29,4 +29,9 @@ export class AuthService {
             delay(500)
         );
     }
+
+    /** logout user */
+    public logout(): void {
+        localStorage.removeItem('user');
+    }
 }
