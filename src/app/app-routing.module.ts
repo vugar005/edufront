@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthLoginComponent } from './auth/auth-login/auth-login.component';
+import { AuthSignupComponent } from './auth/auth-signup/auth-signup.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: AuthLoginComponent},
+  {path: 'signup', component: AuthSignupComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
