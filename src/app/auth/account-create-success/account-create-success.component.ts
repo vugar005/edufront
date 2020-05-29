@@ -5,7 +5,7 @@ import { AppState } from 'src/app/reducers';
 import { logout } from '../store/auth.actions';
 
 @Component({
-  selector: 'app-account-create-success',
+  selector: 'account-create-success',
   templateUrl: './account-create-success.component.html',
   styleUrls: ['./account-create-success.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

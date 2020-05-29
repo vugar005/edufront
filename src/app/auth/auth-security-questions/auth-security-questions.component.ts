@@ -11,7 +11,7 @@ import { AUTH_SECURITY_QUESTIONS_CONSTANTS } from './auth-security-questions.con
 import { SecurityQuestion } from './models/security-question.model';
 
 @Component({
-  selector: 'app-auth-security-questions',
+  selector: 'auth-security-questions',
   templateUrl: './auth-security-questions.component.html',
   styleUrls: ['./auth-security-questions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,7 +38,6 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._onDestroy$.next();
   }
-
 
   public onSubmit(): void {
     if (!this.form.valid) { return; }

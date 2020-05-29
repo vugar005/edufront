@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { AUTH_SIGNUP_CONSTANTS } from '../auth.constants';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Actions, ofType } from '@ngrx/effects';
@@ -7,21 +7,25 @@ import { AppState } from 'src/app/reducers';
 import { FIELD_ERORRS, FIELD_ERROR_TYPES } from 'src/app/app.constants';
 import { AuthActions } from '../store/action-types';
 import { AuthUser } from '../models/auth-user.model';
-import { login, signup } from '../store/auth.actions';
+import { signup } from '../store/auth.actions';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-auth-signup',
+  selector: 'auth-signup',
   templateUrl: './auth-signup.component.html',
   styleUrls: ['./auth-signup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthSignupComponent implements OnInit {
+export class AuthSignupComponent implements OnInit, OnDestroy {
 
   public constants = AUTH_SIGNUP_CONSTANTS;
   public form: FormGroup;
   public isPasswordVisible: boolean;
   public isConfirmPasswordVisible: boolean;
   public loading: boolean;
+  private _onDestroy$ = new Subject<void>();
+
   constructor(
     private _actions$: Actions,
     private _store: Store<AppState>,
@@ -33,6 +37,9 @@ export class AuthSignupComponent implements OnInit {
     this._listenToLoginResponse()
   }
 
+  ngOnDestroy(): void {
+    this._onDestroy$.next();
+  }
 
   public getErrorMessage(): string {
     const { username, email, password, confirmPassword } = this.form.controls;
@@ -52,6 +59,7 @@ export class AuthSignupComponent implements OnInit {
   public _listenToLoginResponse(): void {
     this._actions$.pipe(
       ofType(AuthActions.signupSuccess, AuthActions.signupFailure),
+      takeUntil(this._onDestroy$)
     ).subscribe(res => {
         this._setLoading(false);
     });
