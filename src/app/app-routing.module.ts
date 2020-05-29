@@ -7,6 +7,7 @@ import { PasswordRecoveryEmailSentComponent } from './auth/password-recovery-ema
 import { AuthForgotPasswordComponent } from './auth/auth-forgot-password/auth-forgot-password.component';
 import { AuthSecurityQuestionsComponent } from './auth/auth-security-questions/auth-security-questions.component';
 import { AuthSetNewPasswordComponent } from './auth/auth-set-new-password/auth-set-new-password.component';
+import { AuthPasswordChangeSuccessComponent } from './auth/auth-password-change-success/auth-password-change-success.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: AuthForgotPasswordComponent },
   { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent },
   { path: 'security-questions', component: AuthSecurityQuestionsComponent },
-  { path: 'set-new-password', component: AuthSetNewPasswordComponent }
+  { path: 'set-new-password', component: AuthSetNewPasswordComponent },
+  { path: 'set-new-password-success', component: AuthPasswordChangeSuccessComponent }
 ];
 
 @NgModule({

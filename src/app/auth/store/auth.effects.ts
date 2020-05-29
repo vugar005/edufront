@@ -110,6 +110,9 @@ export class AuthEffects {
     exhaustMap(action =>
       this._authService.setNewPassword(action.payload).pipe(
         map(res => AuthActions.setNewPasswordSuccess()),
+        tap(res => {
+          this._router.navigateByUrl('set-new-password-success');
+        }),
         catchError(error => {
           this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
           return  of(AuthActions.setNewPasswordFailure({ payload: error }));
