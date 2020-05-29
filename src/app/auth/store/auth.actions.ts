@@ -33,7 +33,22 @@ export const signupFailure = createAction(
 );
 
 export const logout = createAction(
-    "[Auth]  Logout",
+    "[Auth] Logout",
+    props<{}>()
+);
+
+export const forgotPassword = createAction(
+    "[Auth Forgot Password] Forgot Password",
+    props<{payload: string}>()
+);
+
+export const forgotPasswordSuccess = createAction(
+    "[Auth Forgot Password] Forgot Password Success",
+    props<{}>()
+);
+
+export const forgotPasswordFailure = createAction(
+    "[Auth Forgot Password] Forgot Password Failure",
     props<{}>()
 );
 

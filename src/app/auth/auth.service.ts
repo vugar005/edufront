@@ -30,6 +30,13 @@ export class AuthService {
         );
     }
 
+    public forgotPassword(payload: string): Observable<boolean> {
+        return of(true)
+        .pipe(
+            delay(500)
+        );
+    }
+
     /** logout user */
     public logout(): void {
         localStorage.removeItem('user');

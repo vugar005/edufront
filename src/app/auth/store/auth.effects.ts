@@ -44,6 +44,20 @@ export class AuthEffects {
       )
   );
 
+    forgotPassword$ = createEffect(() =>
+      this._actions$.pipe(
+        ofType(AuthActions.forgotPassword),
+        exhaustMap(action =>
+          this._authService.forgotPassword(action.payload).pipe(
+            tap(res => {
+              this._router.navigateByUrl('password-recover-email-sent');
+            }),
+            catchError(error => of(AuthActions.forgotPasswordFailure({ error })))
+          )
+        )
+      ), { dispatch: false }
+  );
+
     logout$ = createEffect(() =>
       this._actions$.pipe(
         ofType(AuthActions.logout),

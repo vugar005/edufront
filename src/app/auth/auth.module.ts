@@ -11,6 +11,8 @@ import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AccountCreateSuccessComponent } from './account-create-success/account-create-success.component';
+import { AuthForgotPasswordComponent } from './auth-forgot-password/auth-forgot-password.component';
+import { PasswordRecoveryEmailSentComponent } from './password-recovery-email-sent/password-recovery-email-sent.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,8 @@ import { AccountCreateSuccessComponent } from './account-create-success/account-
     AuthLoginComponent,
     AuthSignupComponent,
     AccountCreateSuccessComponent,
+    AuthForgotPasswordComponent,
+    PasswordRecoveryEmailSentComponent,
   ]
 })
 export class AuthModule { }
