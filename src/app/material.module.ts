@@ -3,6 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 
 const MATERIAL_MODULES = [
@@ -10,7 +11,8 @@ const MATERIAL_MODULES = [
     MatFormFieldModule,
     MatButtonModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
 ];
 @NgModule({
   imports: [

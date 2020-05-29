@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { EffectsModule } from '@ngrx/effects';
 import { MaterialModule } from './material.module';
 import { AuthService } from './auth/auth.service';
+import { NotificationService } from './shared/services/notification.service';
 
 const MODULES = [
     BrowserModule,
@@ -32,7 +33,8 @@ const MODULES = [
     EffectsModule,
   ],
   providers: [
-      AuthService
+      AuthService,
+      NotificationService
   ]
 })
 
