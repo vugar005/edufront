@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from './action-types';
-import { tap, exhaustMap, map, catchError } from 'rxjs/operators';
+import { tap, exhaustMap, map, catchError, delay } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -52,6 +52,10 @@ export class AuthEffects {
             tap(res => {
               this._router.navigateByUrl('password-recover-email-sent');
             }),
+            delay(1000),
+            tap(res => {
+              this._router.navigateByUrl('security-questions');
+            }),
             catchError(error => of(AuthActions.forgotPasswordFailure({ error })))
           )
         )
@@ -68,6 +72,18 @@ export class AuthEffects {
         )
       ), { dispatch: false }
   );
+
+  getQuestions$ = createEffect((): any =>
+  this._actions$.pipe(
+    ofType(AuthActions.getQuestions),
+    exhaustMap(action =>
+      this._authService.getQuestions().pipe(
+        map(res => AuthActions.getQuestionsSuccess({payload: res})),
+        catchError(error => of(AuthActions.getQuestionsFailure({ payload: error })))
+      )
+    )
+  )
+);
 
     constructor(
         private _actions$: Actions,

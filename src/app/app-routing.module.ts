@@ -5,6 +5,7 @@ import { AuthSignupComponent } from './auth/auth-signup/auth-signup.component';
 import { AccountCreateSuccessComponent } from './auth/account-create-success/account-create-success.component';
 import { PasswordRecoveryEmailSentComponent } from './auth/password-recovery-email-sent/password-recovery-email-sent.component';
 import { AuthForgotPasswordComponent } from './auth/auth-forgot-password/auth-forgot-password.component';
+import { AuthSecurityQuestionsComponent } from './auth/auth-security-questions/auth-security-questions.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'signup', component: AuthSignupComponent },
   { path: 'account-create-success', component: AccountCreateSuccessComponent },
   { path: 'forgot-password', component: AuthForgotPasswordComponent },
-  { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent }
+  { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent },
+  { path: 'security-questions', component: AuthSecurityQuestionsComponent }
 ];
 
 @NgModule({

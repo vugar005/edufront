@@ -41,4 +41,12 @@ export class AuthService {
     public logout(): void {
         localStorage.removeItem('user');
     }
+
+    /** get questions for password recovery */
+    public getQuestions(): Observable<string[]> {
+        return of(['your favorite singer', 'your favorite stock'])
+        .pipe(
+            delay(500)
+        );
+    }
 }

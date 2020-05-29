@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { AccountCreateSuccessComponent } from './account-create-success/account-create-success.component';
 import { AuthForgotPasswordComponent } from './auth-forgot-password/auth-forgot-password.component';
 import { PasswordRecoveryEmailSentComponent } from './password-recovery-email-sent/password-recovery-email-sent.component';
+import { AuthSecurityQuestionsComponent } from './auth-security-questions/auth-security-questions.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { PasswordRecoveryEmailSentComponent } from './password-recovery-email-se
     AccountCreateSuccessComponent,
     AuthForgotPasswordComponent,
     PasswordRecoveryEmailSentComponent,
+    AuthSecurityQuestionsComponent,
   ]
 })
 export class AuthModule { }

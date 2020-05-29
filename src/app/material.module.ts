@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 
 const MATERIAL_MODULES = [
@@ -12,7 +13,8 @@ const MATERIAL_MODULES = [
     MatButtonModule,
     MatRadioModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
 ];
 @NgModule({
   imports: [

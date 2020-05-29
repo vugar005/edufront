@@ -40,13 +40,7 @@ export class AuthLoginComponent implements OnInit {
     return;
   }
 
-  public _listenToLoginResponse(): void {
-    this._actions$.pipe(
-      ofType(AuthActions.loginSuccess, AuthActions.loginFailure),
-    ).subscribe(res => {
-        this._setLoading(false);
-    });
-  }
+
 
   public onSubmit(): void {
     if (!this.form.valid) { return; }
@@ -68,5 +62,12 @@ export class AuthLoginComponent implements OnInit {
     });
   }
 
+  private _listenToLoginResponse(): void {
+    this._actions$.pipe(
+      ofType(AuthActions.loginSuccess, AuthActions.loginFailure),
+    ).subscribe(res => {
+        this._setLoading(false);
+    });
+  }
 
 }
