@@ -8,7 +8,7 @@
 }
 
 .component {
-    width: 320px;
+    width: 410px;
     &__header {
         display: flex;
         justify-content: center;
@@ -20,40 +20,48 @@
         color: var(--primary-default);
     }
     &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__icon {
+            width: 60px;
+            height: 60px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
         &__title {
             font-weight: 500;
             font-size: 30px;
         }
         &__subtitle {
-            font-size: 16px;
+            font-size: 17px;
             margin: 15px 0;
             text-align: center;
-            a {
-                color: var(--primary-default);
-                cursor: pointer;
-            }
         }
-        &__form {
+        &__footer {
+            display: flex;
+            justify-content: space-between;
             width: 100%;
-            form {
-                display: flex;
-                flex-direction: column;
-            }
+            margin-top: 20px;
+            padding: 0 44px;
             button {
                 color: #ffffff;
+                width: 153px;
                 border-radius: 25px;
-                margin: 15px 0;
-            }
-            &__footer {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                &__fogot {
+                font-size: 17px;
+                &:first-child {
                     color: var(--primary-default);
+                    border: 1px solid var(--primary-default);
                 }
             }
         }
+
     }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { AUTH_LOGIN_CONSTANTS } from '../auth.constants';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { FIELD_ERORRS } from 'src/app/app.constants';
+import { FIELD_ERORRS, FIELD_ERROR_TYPES } from 'src/app/app.constants';
 import { Actions, ofType } from '@ngrx/effects';
 import { AuthActions } from '../store/action-types';
 import { AppState } from 'src/app/reducers';
@@ -31,18 +31,10 @@ export class AuthLoginComponent implements OnInit {
     this._listenToLoginResponse()
   }
 
-  private _initForm(): void {
-    this.form = new FormGroup({
-      'username': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.required),
-      'remember': new FormControl(false),
-    });
-  }
-
   public getErrorMessage(): string {
-    const userName: AbstractControl = this.form.controls['username'];
-    const password: AbstractControl = this.form.controls['password'];
-    if (userName.hasError('required') || password.hasError('required')) {
+    const { username, password} = this.form.controls;
+    const required = FIELD_ERROR_TYPES.required;
+    if (username.hasError(required) || password.hasError(required)) {
       return FIELD_ERORRS.required;
     }
     return;
@@ -67,5 +59,14 @@ export class AuthLoginComponent implements OnInit {
     this.loading = loading;
     this._changeRef.detectChanges();
   }
+
+  private _initForm(): void {
+    this.form = new FormGroup({
+      'username': new FormControl('', Validators.required),
+      'password': new FormControl('', Validators.required),
+      'remember': new FormControl(false),
+    });
+  }
+
 
 }

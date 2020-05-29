@@ -17,4 +17,16 @@ export class AuthService {
             delay(500)
         );
     }
+
+    /** triggered by Auth Signup Effect */
+    public signup(user: AuthUser): Observable<AuthUser> {
+        const mockUser: AuthUser = {
+            id: '123',
+            username: 'vugar'
+        }
+        return of(mockUser)
+        .pipe(
+            delay(500)
+        );
+    }
 }

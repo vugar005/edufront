@@ -23,6 +23,19 @@ export class AuthEffects {
     )
   );
 
+    singup$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(AuthActions.signup),
+      exhaustMap(action =>
+        this._authService.signup(action.payload).pipe(
+          map(user => AuthActions.signupSuccess({ payload: user})),
+          tap(res => this._notificationService.createSuccessNotification('Singup Success')),
+          catchError(error => of(AuthActions.signupFailure({ error })))
+        )
+      )
+    )
+  );
+
     constructor(
         private _actions$: Actions,
         private _notificationService: NotificationService,

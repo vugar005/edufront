@@ -9,19 +9,23 @@ import { AuthEffects } from './store/auth.effects';
 import { authReducer } from './store/auth.reducer';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { AccountCreateSuccessComponent } from './account-create-success/account-create-success.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    RouterModule,
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [
     AuthComponent,
     AuthLoginComponent,
-    AuthSignupComponent
+    AuthSignupComponent,
+    AccountCreateSuccessComponent,
   ]
 })
 export class AuthModule { }

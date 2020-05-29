@@ -7,7 +7,7 @@
             {{constants?.title}}
         </div>
         <div class="component__content__subtitle">
-            {{constants?.subtitle}} <span>Sign Up</span>
+            {{constants?.subtitle}} <a routerLink="/signup">Sign Up</a>
         </div>
         <div class="component__content__form">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
