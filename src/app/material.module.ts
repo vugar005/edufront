@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -5,7 +6,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NgModule } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MATERIAL_MODULES = [
     MatInputModule,
@@ -14,7 +15,8 @@ const MATERIAL_MODULES = [
     MatRadioModule,
     MatIconModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule
 ];
 @NgModule({
   imports: [

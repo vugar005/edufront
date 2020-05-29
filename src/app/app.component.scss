@@ -1,0 +1,13 @@
+:host {
+    display: block;
+}
+
+.global-menu {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+.is-active {
+    background: lightgray;
+}

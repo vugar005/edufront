@@ -53,7 +53,7 @@ export class AuthEffects {
             tap(res => {
               this._router.navigateByUrl('password-recover-email-sent');
             }),
-            delay(1000),
+            delay(2000),
             tap(res => {
               this._router.navigateByUrl('security-questions');
             }),
