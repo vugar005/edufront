@@ -1,1 +1,42 @@
-<p>auth-login works!</p>
+<div class="component">
+    <div class="component__header">
+        EduFront
+    </div>
+    <div class="component__content">
+        <div class="component__content__title">
+            {{constants?.title}}
+        </div>
+        <div class="component__content__subtitle">
+            {{constants?.subtitle}} <span>Sign Up</span>
+        </div>
+        <div class="component__content__form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                <mat-form-field>
+                    <input matInput formControlName="username" placeholder="User Name">
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Password">
+                    <mat-icon matSuffix (click)="isPasswordVisible = !isPasswordVisible">
+                        <ng-container *ngIf="!isPasswordVisible">visibility</ng-container>
+                        <ng-container *ngIf="isPasswordVisible">visibility_off</ng-container>
+                    </mat-icon>
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" [ngClass]="{'is-loading': loading}" [disabled] = "!form?.valid"> SIGN IN</button>
+
+                <div class="component__content__form__footer">
+                    <mat-radio-group  formControlName="remember">
+                        <mat-radio-button value="true">{{constants?.remember}}</mat-radio-button>
+                    </mat-radio-group>
+                    <div class="component__content__form__footer__fogot">
+                        {{constants?.forgotPassword}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

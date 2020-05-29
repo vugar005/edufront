@@ -7,26 +7,33 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { AuthModule } from './auth/auth.module';
 import { EffectsModule } from '@ngrx/effects';
+import { MaterialModule } from './material.module';
+import { AuthService } from './auth/auth.service';
 
-@NgModule({
-  imports: [
+const MODULES = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    MaterialModule
+];
+
+@NgModule({
+  imports: [
+    ...MODULES,
     EffectsModule.forRoot([]),
     StoreModule.forRoot(reducers, {
       metaReducers
     })
   ],
   exports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AuthModule,
-    StoreModule
+    ...MODULES,
+    StoreModule,
+    EffectsModule,
   ],
-  providers: []
+  providers: [
+      AuthService
+  ]
 })
 
 export class CoreModule {

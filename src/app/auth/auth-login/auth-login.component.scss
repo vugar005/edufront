@@ -1,0 +1,58 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 35px;
+}
+
+.component {
+    width: 320px;
+    &__header {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        width: 100vw;
+        top: 35px;
+        left: 0;
+        font-size: 40px;
+        color: var(--primary-default);
+    }
+    &__content {
+        &__title {
+            font-weight: 500;
+            font-size: 30px;
+        }
+        &__subtitle {
+            font-size: 16px;
+            margin: 15px 0;
+            text-align: center;
+            span {
+                color: var(--primary-default);
+            }
+        }
+        &__form {
+            width: 100%;
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            button {
+                color: #ffffff;
+                border-radius: 25px;
+                margin: 15px 0;
+            }
+            &__footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                &__fogot {
+                    color: var(--primary-default);
+                }
+            }
+        }
+    }
+
+}

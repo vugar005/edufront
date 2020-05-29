@@ -10,21 +10,24 @@ import { AuthActions } from './action-types';
 
 
 export interface AuthState {
-    user: AuthUser
+    user: AuthUser;
+    isAuthenticated: boolean;
 }
 
 export const INITIAL_AUTH_STATE: AuthState = {
-    user: null
+    user: null,
+    isAuthenticated: false
 };
 
  const _authReducer = createReducer(
 
     INITIAL_AUTH_STATE,
 
-    on(AuthActions.login, (state, action) => {
+    on(AuthActions.loginSuccess, (state, action) => {
         return {
             ...state,
-            user: action.user
+            user: action.payload,
+            isAuthenticated: true
         }
     }),
 

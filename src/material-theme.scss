@@ -1,0 +1,58 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+$bv-brand: (
+    50 : #edf5fd,
+    100 : #d2e5fb,
+    200 : #b4d4f9,
+    300 : #96c3f6,
+    400 : #80b6f4,
+    500 : #69a9f2,
+    600 : #61a2f0,
+    700 : #5698ee,
+    800 : #4c8fec,
+    900 : #3b7ee8,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #cee0ff,
+    A700 : #b4d0ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$frontend-vugar-primary: mat-palette($bv-brand, 600);
+$frontend-vugar-accent: mat-palette($bv-brand, 600, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$frontend-vugar-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$frontend-vugar-theme: mat-light-theme($frontend-vugar-primary, $frontend-vugar-accent, $frontend-vugar-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($frontend-vugar-theme);
