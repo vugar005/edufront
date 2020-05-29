@@ -82,3 +82,17 @@ export const postQuestionsFailure = createAction(
     props<{payload: HttpErrorResponse}>()
 );
 
+export const setNewPassword = createAction(
+    "[Auth Set New Password] Set New Passwrd",
+    props<{payload: string}>()
+);
+
+export const setNewPasswordSuccess = createAction(
+    "[Auth Set New Password] Set New Passwrd Success"
+);
+
+export const setNewPasswordFailure = createAction(
+    "[Auth Set New Password] Set New Passwrd Failure",
+    props<{payload: HttpErrorResponse}>()
+);
+

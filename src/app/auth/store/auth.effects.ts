@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { Router } from '@angular/router';
+import { DEFALT_API_ERROR_MSG } from 'src/app/app.constants';
 
 
 @Injectable()
@@ -56,7 +57,10 @@ export class AuthEffects {
             tap(res => {
               this._router.navigateByUrl('security-questions');
             }),
-            catchError(error => of(AuthActions.forgotPasswordFailure({ error })))
+            catchError(error =>{
+              this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
+              return of(AuthActions.forgotPasswordFailure({ error }));
+            })
           )
         )
       ), { dispatch: false }
@@ -91,7 +95,25 @@ export class AuthEffects {
     exhaustMap(action =>
       this._authService.postQuestions(action.payload).pipe(
         map(res => AuthActions.postQuestionsSuccess()),
-        catchError(error => of(AuthActions.postQuestionsFailure({ payload: error })))
+        catchError(error => {
+          this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
+          return of(AuthActions.postQuestionsFailure({ payload: error }));
+        })
+      )
+    )
+  )
+);
+
+  setNewPassord$ = createEffect((): any =>
+  this._actions$.pipe(
+    ofType(AuthActions.setNewPassword),
+    exhaustMap(action =>
+      this._authService.setNewPassword(action.payload).pipe(
+        map(res => AuthActions.setNewPasswordSuccess()),
+        catchError(error => {
+          this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
+          return  of(AuthActions.setNewPasswordFailure({ payload: error }));
+        } )
       )
     )
   )

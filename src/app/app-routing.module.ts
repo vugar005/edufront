@@ -6,6 +6,7 @@ import { AccountCreateSuccessComponent } from './auth/account-create-success/acc
 import { PasswordRecoveryEmailSentComponent } from './auth/password-recovery-email-sent/password-recovery-email-sent.component';
 import { AuthForgotPasswordComponent } from './auth/auth-forgot-password/auth-forgot-password.component';
 import { AuthSecurityQuestionsComponent } from './auth/auth-security-questions/auth-security-questions.component';
+import { AuthSetNewPasswordComponent } from './auth/auth-set-new-password/auth-set-new-password.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'account-create-success', component: AccountCreateSuccessComponent },
   { path: 'forgot-password', component: AuthForgotPasswordComponent },
   { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent },
-  { path: 'security-questions', component: AuthSecurityQuestionsComponent }
+  { path: 'security-questions', component: AuthSecurityQuestionsComponent },
+  { path: 'set-new-password', component: AuthSetNewPasswordComponent }
 ];
 
 @NgModule({

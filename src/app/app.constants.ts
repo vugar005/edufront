@@ -9,3 +9,5 @@ export enum FIELD_ERROR_TYPES {
     email = 'email',
     passwordMatch = 'passwordMatch'
 }
+
+export const DEFALT_API_ERROR_MSG = `Something Went wrong`;

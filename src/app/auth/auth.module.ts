@@ -14,6 +14,7 @@ import { AccountCreateSuccessComponent } from './account-create-success/account-
 import { AuthForgotPasswordComponent } from './auth-forgot-password/auth-forgot-password.component';
 import { PasswordRecoveryEmailSentComponent } from './password-recovery-email-sent/password-recovery-email-sent.component';
 import { AuthSecurityQuestionsComponent } from './auth-security-questions/auth-security-questions.component';
+import { AuthSetNewPasswordComponent } from './auth-set-new-password/auth-set-new-password.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { AuthSecurityQuestionsComponent } from './auth-security-questions/auth-s
     AuthForgotPasswordComponent,
     PasswordRecoveryEmailSentComponent,
     AuthSecurityQuestionsComponent,
+    AuthSetNewPasswordComponent,
   ]
 })
 export class AuthModule { }

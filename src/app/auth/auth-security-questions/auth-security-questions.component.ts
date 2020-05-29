@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AUTH_SECURITY_QUESTIONS_CONSTANTS } from './auth-security-questions.constants';
 import { SecurityQuestion } from './models/security-question.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-security-questions',
@@ -27,6 +28,7 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
     private _actions$: Actions,
     private _store: Store<AppState>,
     private _formBuilder: FormBuilder,
+    private _router: Router,
     private _changeRef: ChangeDetectorRef
   ) { }
 
@@ -89,7 +91,8 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
       ofType(AuthActions.postQuestionsSuccess),
       takeUntil(this._onDestroy$),
     ).subscribe(res => {
-        this._setLoading(false);
+      this._router.navigateByUrl('set-new-password');
+      this._setLoading(false);
     });
     this._actions$.pipe(
       ofType(AuthActions.getQuestionsFailure),

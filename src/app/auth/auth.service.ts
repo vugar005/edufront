@@ -58,4 +58,12 @@ export class AuthService {
             delay(500)
         );
     }
+
+    /** sets new password for user */
+    public setNewPassword(data: string): Observable<boolean> {
+        return of(true)
+        .pipe(
+            delay(500)
+        );
+    }
 }
