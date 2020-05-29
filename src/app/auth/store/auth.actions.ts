@@ -1,6 +1,7 @@
 import {createAction, props} from '@ngrx/store';
 import { AuthUser } from '../models/auth-user.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SecurityQuestion } from '../auth-security-questions/models/security-question.model';
 
 
 export const login = createAction(
@@ -64,6 +65,20 @@ export const getQuestionsSuccess = createAction(
 
 export const getQuestionsFailure = createAction(
     "[Auth Security Questions] Get Questions Failure",
+    props<{payload: HttpErrorResponse}>()
+);
+
+export const postQuestions = createAction(
+    "[Auth Security Questions] Post Questions",
+    props<{payload: SecurityQuestion[]}>()
+);
+
+export const postQuestionsSuccess = createAction(
+    "[Auth Security Questions] Post Questions Success"
+);
+
+export const postQuestionsFailure = createAction(
+    "[Auth Security Questions] Post Questions Failure",
     props<{payload: HttpErrorResponse}>()
 );
 

@@ -85,6 +85,18 @@ export class AuthEffects {
   )
 );
 
+  postQuestions$ = createEffect((): any =>
+  this._actions$.pipe(
+    ofType(AuthActions.postQuestions),
+    exhaustMap(action =>
+      this._authService.postQuestions(action.payload).pipe(
+        map(res => AuthActions.postQuestionsSuccess()),
+        catchError(error => of(AuthActions.postQuestionsFailure({ payload: error })))
+      )
+    )
+  )
+);
+
     constructor(
         private _actions$: Actions,
         private _notificationService: NotificationService,

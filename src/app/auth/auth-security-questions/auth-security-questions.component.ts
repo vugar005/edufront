@@ -1,20 +1,20 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { getQuestions, login } from '../store/auth.actions';
+import { getQuestions, postQuestions } from '../store/auth.actions';
 import { AuthActions } from '../store/action-types';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AUTH_SECURITY_QUESTIONS_CONSTANTS } from './auth-security-questions.constants';
-import { FIELD_ERROR_TYPES, FIELD_ERORRS } from 'src/app/app.constants';
-import { AuthUser } from '../models/auth-user.model';
+import { SecurityQuestion } from './models/security-question.model';
 
 @Component({
   selector: 'app-auth-security-questions',
   templateUrl: './auth-security-questions.component.html',
-  styleUrls: ['./auth-security-questions.component.scss']
+  styleUrls: ['./auth-security-questions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
   public constants = AUTH_SECURITY_QUESTIONS_CONSTANTS;
@@ -39,22 +39,12 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
     this._onDestroy$.next();
   }
 
-  public getErrorMessage(): string {
-    const { question, answer} = this.form.controls;
-    const required = FIELD_ERROR_TYPES.required;
-    if (question.hasError(required) || answer.hasError(required)) {
-      return FIELD_ERORRS.required;
-    }
-    return;
-  }
-
-
 
   public onSubmit(): void {
     if (!this.form.valid) { return; }
     this._setLoading(true);
-    // const user: AuthUser = this.form.value;
-    // this._store.dispatch(login({payload: user}));
+    const questions: SecurityQuestion[] = this.form.value.questions;
+    this._store.dispatch(postQuestions({payload:questions}));
   }
 
   public get questionsComponents() { return (<FormArray>this.form.get('questions') as any).controls; }
@@ -93,9 +83,27 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
       ofType(AuthActions.getQuestionsSuccess),
       takeUntil(this._onDestroy$),
     ).subscribe(res => {
-      console.log(res);
        this._initForm(res.payload);
-       console.log(this.form)
+    });
+
+    this._actions$.pipe(
+      ofType(AuthActions.postQuestionsSuccess),
+      takeUntil(this._onDestroy$),
+    ).subscribe(res => {
+        this._setLoading(false);
+    });
+    this._actions$.pipe(
+      ofType(AuthActions.getQuestionsFailure),
+      takeUntil(this._onDestroy$),
+    ).subscribe(res => {
+       this._setLoading(false);
+    });
+
+    this._actions$.pipe(
+      ofType(AuthActions.postQuestionsFailure),
+      takeUntil(this._onDestroy$),
+    ).subscribe(res => {
+        this._setLoading(false);
     });
   }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthUser } from './models/auth-user.model';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { SecurityQuestion } from './auth-security-questions/models/security-question.model';
 
 @Injectable()
 export class AuthService {
@@ -45,6 +46,14 @@ export class AuthService {
     /** get questions for password recovery */
     public getQuestions(): Observable<string[]> {
         return of(['your favorite singer', 'your favorite stock'])
+        .pipe(
+            delay(500)
+        );
+    }
+
+    /** post questions and answers for password recovery */
+    public postQuestions(data: SecurityQuestion[]): Observable<boolean> {
+        return of(true)
         .pipe(
             delay(500)
         );
