@@ -72,7 +72,7 @@ export class AuthService {
     public submitUserProfile(data: UserProfile): Observable<boolean> {
         return of(true)
         .pipe(
-            delay(500)
+            delay(1000)
         );
     }
 }

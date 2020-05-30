@@ -91,7 +91,7 @@ export class AuthSecurityQuestionsComponent implements OnInit, OnDestroy {
       ofType(AuthActions.postQuestionsSuccess),
       takeUntil(this._onDestroy$),
     ).subscribe(res => {
-      this._router.navigateByUrl('set-new-password');
+      this._router.navigateByUrl('auth/set-new-password');
       this._setLoading(false);
     });
     this._actions$.pipe(

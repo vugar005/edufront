@@ -75,7 +75,7 @@ export class AuthSetupProfileComponent implements OnInit, OnDestroy {
      takeUntil(this._onDestroy$)
    ).subscribe(res => {
        this._setLoading(false);
-       this._router.navigateByUrl('setup-profile-success');
+       this._router.navigateByUrl('auth/setup-profile-success');
    });
  }
 

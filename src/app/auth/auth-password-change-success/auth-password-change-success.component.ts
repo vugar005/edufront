@@ -21,7 +21,7 @@ export class AuthPasswordChangeSuccessComponent implements OnInit {
 
   private _redirectToLoginPage(): void {
     setTimeout(() => {
-      this._router.navigateByUrl('login');
+      this._router.navigateByUrl('auth/login');
     }, 5000);
   }
 

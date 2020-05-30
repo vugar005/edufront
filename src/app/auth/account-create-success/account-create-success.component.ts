@@ -3,6 +3,7 @@ import { ACCOUNT_CREATE_SUCCESS_CONSTANTS } from './account-create-success.const
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { logout } from '../store/auth.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'account-create-success',
@@ -14,6 +15,7 @@ export class AccountCreateSuccessComponent implements OnInit {
   public constants = ACCOUNT_CREATE_SUCCESS_CONSTANTS;
   constructor(
     private _store: Store<AppState>,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,10 @@ export class AccountCreateSuccessComponent implements OnInit {
 
   public onLogout(): void {
       this._store.dispatch(logout({}));
+  }
+
+  public onSetUpProfile(): void {
+      this._router.navigateByUrl('auth/setup-profile')
   }
 
 }
