@@ -9,6 +9,7 @@ import { AuthSecurityQuestionsComponent } from './auth/auth-security-questions/a
 import { AuthSetNewPasswordComponent } from './auth/auth-set-new-password/auth-set-new-password.component';
 import { AuthPasswordChangeSuccessComponent } from './auth/auth-password-change-success/auth-password-change-success.component';
 import { AuthSetupProfileComponent } from './auth/auth-setup-profile/auth-setup-profile.component';
+import { AuthSetupProfileSuccessComponent } from './auth/auth-setup-profile-success/auth-setup-profile-success.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'security-questions', component: AuthSecurityQuestionsComponent },
   { path: 'set-new-password', component: AuthSetNewPasswordComponent },
   { path: 'set-new-password-success', component: AuthPasswordChangeSuccessComponent },
-  { path: 'setup-profile', component: AuthSetupProfileComponent }
+  { path: 'setup-profile', component: AuthSetupProfileComponent },
+  { path: 'setup-profile-success', component: AuthSetupProfileSuccessComponent }
 ];
 
 @NgModule({

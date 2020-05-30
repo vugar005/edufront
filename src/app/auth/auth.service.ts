@@ -3,6 +3,7 @@ import { AuthUser } from './models/auth-user.model';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { SecurityQuestion } from './auth-security-questions/models/security-question.model';
+import { UserProfile } from './models/user-profile.model';
 
 @Injectable()
 export class AuthService {
@@ -61,6 +62,14 @@ export class AuthService {
 
     /** sets new password for user */
     public setNewPassword(data: string): Observable<boolean> {
+        return of(true)
+        .pipe(
+            delay(500)
+        );
+    }
+
+    /** submit user profile */
+    public submitUserProfile(data: UserProfile): Observable<boolean> {
         return of(true)
         .pipe(
             delay(500)

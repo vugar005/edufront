@@ -21,6 +21,7 @@ import { SetupProfileBioComponent } from './auth-setup-profile/setup-profile-bio
 import { SetupProfilePictureComponent } from './auth-setup-profile/setup-profile-picture/setup-profile-picture.component';
 import { SetupProfileAddressComponent } from './auth-setup-profile/setup-profile-address/setup-profile-address.component';
 import { SetupProfileSecurityComponent } from './auth-setup-profile/setup-profile-security/setup-profile-security.component';
+import { AuthSetupProfileSuccessComponent } from './auth-setup-profile-success/auth-setup-profile-success.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { SetupProfileSecurityComponent } from './auth-setup-profile/setup-profil
     SetupProfilePictureComponent,
     SetupProfileAddressComponent,
     SetupProfileSecurityComponent,
+    AuthSetupProfileSuccessComponent,
   ]
 })
 export class AuthModule { }

@@ -31,7 +31,9 @@
     <ng-template matStepLabel>Security</ng-template>
     <setup-profile-security> </setup-profile-security>
     <div class="action-buttons">
-      <button  mat-raised-button color="primary" class="next-button" [disabled]="!frmStepSecurity?.valid" >Next</button>
+      <button  mat-raised-button color="primary"
+      [ngClass] = "{'is-loading': loading}"
+      class="next-button" (click)="onSubmit()" [disabled]="!frmStepSecurity?.valid" >Next</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

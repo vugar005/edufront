@@ -122,6 +122,21 @@ export class AuthEffects {
   )
 );
 
+  submitUserProfile$ = createEffect((): any =>
+  this._actions$.pipe(
+    ofType(AuthActions.submitUserProfile),
+    exhaustMap(action =>
+      this._authService.submitUserProfile(action.payload).pipe(
+        map(res => AuthActions.submitUserProfileSuccess()),
+        catchError(error => {
+          this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
+          return  of(AuthActions.submitUserProfileFailure({ payload: error }));
+        } )
+      )
+    )
+  )
+);
+
     constructor(
         private _actions$: Actions,
         private _notificationService: NotificationService,

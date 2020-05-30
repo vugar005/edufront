@@ -2,6 +2,7 @@ import {createAction, props} from '@ngrx/store';
 import { AuthUser } from '../models/auth-user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SecurityQuestion } from '../auth-security-questions/models/security-question.model';
+import { UserProfile } from '../models/user-profile.model';
 
 
 export const login = createAction(
@@ -93,6 +94,20 @@ export const setNewPasswordSuccess = createAction(
 
 export const setNewPasswordFailure = createAction(
     "[Auth Set New Password] Set New Passwrd Failure",
+    props<{payload: HttpErrorResponse}>()
+);
+
+export const submitUserProfile = createAction(
+    "[Auth User Profile] Submit User Profile",
+    props<{payload: UserProfile}>()
+);
+
+export const submitUserProfileSuccess = createAction(
+    "[Auth Set New Password] Submit User Profile Success"
+);
+
+export const submitUserProfileFailure = createAction(
+    "[Auth Set New Password] Submit User Profile Failure",
     props<{payload: HttpErrorResponse}>()
 );
 
