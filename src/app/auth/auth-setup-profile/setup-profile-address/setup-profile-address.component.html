@@ -1,0 +1,34 @@
+<div class="form-wrapper">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-wrapper__form">
+
+        <mat-form-field class="form-field">
+            <input matInput formControlName="address" placeholder="Address">
+            <mat-error>{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Countries</mat-label>
+            <mat-select formControlName="country">
+              <mat-option *ngFor="let item of countries" [value]="item.value">{{item.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <input matInput formControlName="zipcode" placeholder="Zip Code">
+            <mat-error>{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state">
+              <mat-option *ngFor="let item of states" [value]="item.value">{{item.label}}</mat-option>
+            </mat-select>
+         </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <input matInput formControlName="city" placeholder="City">
+            <mat-error>{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+    </form>
+</div>

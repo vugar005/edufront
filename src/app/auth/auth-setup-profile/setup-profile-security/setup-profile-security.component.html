@@ -1,0 +1,25 @@
+<div class="form-wrapper" *ngIf="!loading else loader_template">
+    <form [formGroup]="form" class="form-wrapper__form">
+        <div formArrayName="questions"  *ngFor="let item of questionsComponents; let i = index;" class="form-wrapper__form__array">
+
+            <div [formGroupName]="i" >
+                <mat-form-field class="form-field">
+                    <mat-label>Select Security Question</mat-label>
+                    <mat-select formControlName="question">
+                      <mat-option *ngFor="let item of questions" [value]="item.value">{{item.label}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <mat-form-field class="form-field">
+                    <input matInput formControlName="answer" placeholder="Answer">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+
+<ng-template #loader_template>
+    <div class="progress-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

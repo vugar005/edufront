@@ -1,0 +1,15 @@
+:host {
+    display: block;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.form-wrapper {
+    &__form {
+        display: flex;
+        flex-direction: column;
+        .form-field {
+            width: 100%;
+        }
+    }
+}

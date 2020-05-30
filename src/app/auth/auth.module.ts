@@ -16,6 +16,11 @@ import { PasswordRecoveryEmailSentComponent } from './password-recovery-email-se
 import { AuthSecurityQuestionsComponent } from './auth-security-questions/auth-security-questions.component';
 import { AuthSetNewPasswordComponent } from './auth-set-new-password/auth-set-new-password.component';
 import { AuthPasswordChangeSuccessComponent } from './auth-password-change-success/auth-password-change-success.component';
+import { AuthSetupProfileComponent } from './auth-setup-profile/auth-setup-profile.component';
+import { SetupProfileBioComponent } from './auth-setup-profile/setup-profile-bio/setup-profile-bio.component';
+import { SetupProfilePictureComponent } from './auth-setup-profile/setup-profile-picture/setup-profile-picture.component';
+import { SetupProfileAddressComponent } from './auth-setup-profile/setup-profile-address/setup-profile-address.component';
+import { SetupProfileSecurityComponent } from './auth-setup-profile/setup-profile-security/setup-profile-security.component';
 
 @NgModule({
   imports: [
@@ -36,6 +41,11 @@ import { AuthPasswordChangeSuccessComponent } from './auth-password-change-succe
     AuthSecurityQuestionsComponent,
     AuthSetNewPasswordComponent,
     AuthPasswordChangeSuccessComponent,
+    AuthSetupProfileComponent,
+    SetupProfileBioComponent,
+    SetupProfilePictureComponent,
+    SetupProfileAddressComponent,
+    SetupProfileSecurityComponent,
   ]
 })
 export class AuthModule { }
