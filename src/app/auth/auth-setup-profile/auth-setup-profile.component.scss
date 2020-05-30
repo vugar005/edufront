@@ -1,0 +1,47 @@
+:host {
+    display: block;
+    width: 100vw;
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.edu-stepper {
+    width: 600px;
+    margin: auto;
+    position: relative;
+    ::ng-deep {
+
+       .mat-horizontal-stepper-content {
+           padding: 0 40px;
+       }
+
+       .mat-step-header .mat-step-icon {
+            background: var(--primary-default);
+            color: #ffffff;
+       }
+
+       .mat-step-header .mat-step-icon.mat-step-icon-state-edit {
+            background: #66BB6A;
+       }
+    }
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    margin: auto;
+    .next-button {
+        flex: 1;
+        border-radius: 25px;
+        color: #ffffff;
+        display: block;
+        padding: 4px;
+        margin-top: 20px;
+    }
+}

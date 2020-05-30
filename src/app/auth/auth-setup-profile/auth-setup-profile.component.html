@@ -1,0 +1,39 @@
+<div class="title">Set Up Your Profile</div>
+
+<mat-horizontal-stepper linear #stepper class="edu-stepper">
+
+    <ng-template matStepperIcon="edit">
+        <mat-icon>done</mat-icon>
+      </ng-template>
+
+  <mat-step  errorMessage="Name is required.">
+      <ng-template matStepLabel>Bio Details</ng-template>
+           <setup-profile-bio> </setup-profile-bio>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" class="next-button" [disabled]="!frmStepBio?.valid" matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Profile Picture</ng-template>
+        <setup-profile-picture> </setup-profile-picture>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" class="next-button" matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Address</ng-template>
+      <setup-profile-address> </setup-profile-address>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" class="next-button" [disabled]="!frmStepAddress?.valid" matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Security</ng-template>
+    <setup-profile-security> </setup-profile-security>
+    <div class="action-buttons">
+      <button  mat-raised-button color="primary"
+      [ngClass] = "{'is-loading': loading}"
+      class="next-button" (click)="onSubmit()" [disabled]="!frmStepSecurity?.valid" >Next</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

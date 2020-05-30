@@ -7,7 +7,7 @@
             {{constants?.title}}
         </div>
         <div class="component__content__subtitle">
-            {{constants?.subtitle}} <a routerLink="/signup">Sign Up</a>
+            {{constants?.subtitle}} <a routerLink="/auth/signup">Sign Up</a>
         </div>
         <div class="component__content__form">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -32,7 +32,7 @@
                     <mat-radio-group  formControlName="remember">
                         <mat-radio-button value="true">{{constants?.remember}}</mat-radio-button>
                     </mat-radio-group>
-                    <a class="component__content__form__footer__fogot" routerLink="/forgot-password">
+                    <a class="component__content__form__footer__fogot" routerLink="/auth/forgot-password">
                         {{constants?.forgotPassword}}
                     </a>
                 </div>

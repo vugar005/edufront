@@ -37,7 +37,7 @@ export class AuthEffects {
             tap(res => {
               localStorage.setItem('user', JSON.stringify(action.payload));
               this._notificationService.createSuccessNotification('Singup Success');
-              this._router.navigateByUrl('account-create-success');
+              this._router.navigateByUrl('auth/account-create-success');
             }),
             catchError(error => of(AuthActions.signupFailure({ error })))
           )
@@ -51,11 +51,11 @@ export class AuthEffects {
         exhaustMap(action =>
           this._authService.forgotPassword(action.payload).pipe(
             tap(res => {
-              this._router.navigateByUrl('password-recover-email-sent');
+              this._router.navigateByUrl('auth/password-recover-email-sent');
             }),
             delay(2000),
             tap(res => {
-              this._router.navigateByUrl('security-questions');
+              this._router.navigateByUrl('auth/security-questions');
             }),
             catchError(error =>{
               this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
@@ -71,7 +71,7 @@ export class AuthEffects {
         ofType(AuthActions.logout),
         tap(action => {
             this._authService.logout();
-            this._router.navigateByUrl('login');
+            this._router.navigateByUrl('auth/login');
           }
         )
       ), { dispatch: false }
@@ -111,11 +111,26 @@ export class AuthEffects {
       this._authService.setNewPassword(action.payload).pipe(
         map(res => AuthActions.setNewPasswordSuccess()),
         tap(res => {
-          this._router.navigateByUrl('set-new-password-success');
+          this._router.navigateByUrl('auth/set-new-password-success');
         }),
         catchError(error => {
           this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
           return  of(AuthActions.setNewPasswordFailure({ payload: error }));
+        } )
+      )
+    )
+  )
+);
+
+  submitUserProfile$ = createEffect((): any =>
+  this._actions$.pipe(
+    ofType(AuthActions.submitUserProfile),
+    exhaustMap(action =>
+      this._authService.submitUserProfile(action.payload).pipe(
+        map(res => AuthActions.submitUserProfileSuccess({payload: action.payload})),
+        catchError(error => {
+          this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
+          return  of(AuthActions.submitUserProfileFailure({ payload: error }));
         } )
       )
     )

@@ -8,18 +8,21 @@ import {
 import { AuthUser } from '../models/auth-user.model';
 import { AuthActions } from './action-types';
 import { SecurityQuestion } from '../auth-security-questions/models/security-question.model';
+import { UserProfile } from '../models/user-profile.model';
 
 
 export interface AuthState {
     user: AuthUser;
     isAuthenticated: boolean;
     questions: SecurityQuestion;
+    userProfile: UserProfile;
 }
 
 export const INITIAL_AUTH_STATE: AuthState = {
     user: null,
     isAuthenticated: false,
-    questions: null
+    questions: null,
+    userProfile: null
 };
 
  const _authReducer = createReducer(
@@ -39,6 +42,12 @@ export const INITIAL_AUTH_STATE: AuthState = {
             ...state,
             user: null,
             isAuthenticated: false
+        }
+    }),
+    on(AuthActions.submitUserProfileSuccess, (state, action) => {
+        return {
+            ...state,
+            userProfile: action.payload
         }
     }),
 

@@ -8,18 +8,26 @@ import { AuthForgotPasswordComponent } from './auth/auth-forgot-password/auth-fo
 import { AuthSecurityQuestionsComponent } from './auth/auth-security-questions/auth-security-questions.component';
 import { AuthSetNewPasswordComponent } from './auth/auth-set-new-password/auth-set-new-password.component';
 import { AuthPasswordChangeSuccessComponent } from './auth/auth-password-change-success/auth-password-change-success.component';
+import { AuthSetupProfileComponent } from './auth/auth-setup-profile/auth-setup-profile.component';
+import { AuthSetupProfileSuccessComponent } from './auth/auth-setup-profile-success/auth-setup-profile-success.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: 'login', component: AuthLoginComponent },
-  { path: 'signup', component: AuthSignupComponent },
-  { path: 'account-create-success', component: AccountCreateSuccessComponent },
-  { path: 'forgot-password', component: AuthForgotPasswordComponent },
-  { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent },
-  { path: 'security-questions', component: AuthSecurityQuestionsComponent },
-  { path: 'set-new-password', component: AuthSetNewPasswordComponent },
-  { path: 'set-new-password-success', component: AuthPasswordChangeSuccessComponent }
+  { path: '', redirectTo: 'auth', pathMatch: 'full'},
+  { path: 'auth', component: AuthComponent, children: [
+    { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: 'login', component: AuthLoginComponent },
+    { path: 'signup', component: AuthSignupComponent },
+    { path: 'account-create-success', component: AccountCreateSuccessComponent },
+    { path: 'forgot-password', component: AuthForgotPasswordComponent },
+    { path: 'password-recover-email-sent', component: PasswordRecoveryEmailSentComponent },
+    { path: 'security-questions', component: AuthSecurityQuestionsComponent },
+    { path: 'set-new-password', component: AuthSetNewPasswordComponent },
+    { path: 'set-new-password-success', component: AuthPasswordChangeSuccessComponent },
+    { path: 'setup-profile', component: AuthSetupProfileComponent },
+    { path: 'setup-profile-success', component: AuthSetupProfileSuccessComponent }
+  ]},
 ];
 
 @NgModule({
