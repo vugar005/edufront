@@ -103,7 +103,8 @@ export const submitUserProfile = createAction(
 );
 
 export const submitUserProfileSuccess = createAction(
-    "[Auth Set New Password] Submit User Profile Success"
+    "[Auth Set New Password] Submit User Profile Success",
+    props<{payload: UserProfile}>()
 );
 
 export const submitUserProfileFailure = createAction(

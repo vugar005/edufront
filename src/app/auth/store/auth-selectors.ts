@@ -25,3 +25,8 @@ export const selectQuestions = createSelector(
     selectAuthState,
     state => state.questions
 );
+
+export const selectUserProfile = createSelector(
+    selectAuthState,
+    state => state.userProfile
+);

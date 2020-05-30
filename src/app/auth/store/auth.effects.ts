@@ -127,7 +127,7 @@ export class AuthEffects {
     ofType(AuthActions.submitUserProfile),
     exhaustMap(action =>
       this._authService.submitUserProfile(action.payload).pipe(
-        map(res => AuthActions.submitUserProfileSuccess()),
+        map(res => AuthActions.submitUserProfileSuccess({payload: action.payload})),
         catchError(error => {
           this._notificationService.createErrorNotificaiton(DEFALT_API_ERROR_MSG);
           return  of(AuthActions.submitUserProfileFailure({ payload: error }));
